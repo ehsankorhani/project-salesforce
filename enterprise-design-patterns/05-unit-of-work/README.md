@@ -26,3 +26,10 @@ It is a “utility” class focused on:
     - Registered as new records to be saved at line 55
     - Related to the parent Opportunity record at line 54 using the `registerRelationship` method
 - During the `commitWork()` method execution, the UOW saves the parent Opportunity records, maintains a link to the new opportunity record id, and then adds that parent record id to the child OpportunityLineItem records before saving those new records.
+
+<br><br>
+---
+
+### References
+- [Managing your DML and Transactions with a Unit Of Work](https://andyinthecloud.com/2013/06/09/managing-your-dml-and-transactions-with-a-unit-of-work/)
+- [Doing more work with the Unit Of Work](https://andyinthecloud.com/2014/07/17/doing-more-work-with-the-unit-of-work/)
