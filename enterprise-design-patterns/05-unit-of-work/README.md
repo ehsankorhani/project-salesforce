@@ -17,6 +17,97 @@ It is a “utility” class focused on:
 
 <br>
 
+**Example**:
+
+First, we need to have setup a SObject dependency list (typically as `UnitOfWorkFactory` in `Application.cls` class):
+
+```java
+private static List MY_SOBJECTS = new Schema.SObjectType[] {
+        Product2.SObjectType,
+        PricebookEntry.SObjectType,
+        Opportunity.SObjectType,
+        OpportunityLineItem.SObjectType };
+````
+
+Then, we can
+
+```java
+SObjectUnitOfWork uow = new SObjectUnitOfWork(MY_SOBJECTS);
+
+for(Integer o = 0; o < 10; o++)
+{
+  Opportunity opp = new Opportunity();
+  opp.Name = 'UoW Test Name ' + o;
+
+  uow.registerNew(opp);
+
+  for(Integer i = 0; i < o + 1; i++) {
+    OpportunityLineItem oppLineItem = new OpportunityLineItem();
+    oppLineItem.TotalPrice = 10;
+    
+    uow.registerNew(oppLineItem, OpportunityLineItem.OpportunityId, opp);
+  }
+
+  uow.commitWork();
+}
+```
+
+No maps, and no direct DML.
+
+<br>
+
+### `registerNew` and `registerRelationship`
+
+- Allow you to see into the future
+- Register relationships without knowing the Id’s of records your inserting
+- Delegating this logic, we can avoids managing lists and maps.
+
+```java
+Product2 product = new Product2();
+PricebookEntry pbe = new PricebookEntry();
+OpportunityLineItem oppLineItem = new OpportunityLineItem();
+
+uow.registerNew(pbe, PricebookEntry.Product2Id, product);
+uow.registerRelationship(oppLineItem, OpportunityLineItem.PricebookEntryId, pbe);
+```
+
+The `registerNew` will insert a record and with it's overloaded method we can reference the parent record as well.
+
+With `registerRelationship` we setup a relationship between two records that have yet to be inserted to the database (with the use of *lookup* field).
+
+<br>
+
+### `registerDirty`
+
+Is used to register an existing record to be updated during the commitWork method.
+
+```java
+for(Opportunity opportunity : opportunities)
+{
+  opportunity.Description = 'Consolidated on ' + System.today();
+  uow.registerDirty(opportunity);
+}
+
+uow.commitWork();
+```
+
+<br>
+
+### `registerDeleted`
+
+Should be used when we want to deleted an existing record.
+
+```java
+for(OpportunityLineItem lineForProduct : linesForGroup)
+{
+  uow.registerDeleted(lineForProduct);
+}
+
+uow.commitWork();
+```
+
+<br>
+
 ### UOW manages relationships between parent and child records
 - Since the UOW only holds records until the end of the Service method and the call to the `commitWork()` method, it needs to maintain the “connection” between parent and child records.
 - The `registerRelationship` series of methods accomplish this.
