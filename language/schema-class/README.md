@@ -99,8 +99,23 @@ A sample algorithm to work with Describe would be:
     ```
 <br>
 
-<!-- ### Describe Information Permissions -->
+### Get Child Relationship
 
+We can access the child relationship as well as the child sObject for a parent sObject:
+
+```java
+Schema.DescribeSobjectResult dsr = Account.sObjectType.getDescribe();
+
+Schema.ChildRelationship[] rels = dsr.getChildRelationships();
+```
+
+<br>
+
+### Describe Information Permissions
+
+- Apex classes and triggers run in system mode.
+- No restrictions on dynamically looking up any sObject that is available in the org.
+- Anonymous code runs in User context.
 
 <br>
 
@@ -119,6 +134,34 @@ Schema.sObjectType.Account.fields.Name.isAccessible();
 Schema.sObjectType.Account.isCreateable();
 Schema.sObjectType.Account.isDeletable();
 ```
+
+<br>
+
+### Describing Tabs
+
+It is possible to get metadata information about the `apps` and their `tabs` available in the Salesforce.
+
+```java
+List<Schema.DescribeTabSetResult> tabSetDesc = Schema.describeTabs();
+
+for(DescribeTabSetResult tsr : tabSetDesc) {
+    System.debug('Label: ' + tsr.getLabel(););
+    System.debug('Logo URL: ' + tsr.getLogoUrl());
+    System.debug('isSelected: ' + tsr.isSelected());
+
+    List<Schema.DescribeTabResult> tabDesc = tsr.getTabs();
+    //...
+}
+```
+
+<br>
+
+### Data Categories
+
+To work with category groups associated with the specified objects we can use:
+
+- `describeDataCategoryGroups` to return all the category groups associated with the objects of your choice.
+- `describeDataCategoryGroupStructures` to retrieve the categories available to this objects.
 
 <br><br>
 ---
