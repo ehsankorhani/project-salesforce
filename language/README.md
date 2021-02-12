@@ -1,7 +1,5 @@
 # Apex Programming Language
 
-
-
 ### Table of Contents
 0. Introduction
 1. Data types and variables
@@ -22,3 +20,14 @@
 16. REST web services
 17. ...
 18. HTTP callouts
+
+<br>
+
+## Introduction
+
+
+<br><br>
+
+---
+### References
+- [Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/)
