@@ -3,6 +3,7 @@
 ### Table of Contents
 0. Introduction
 1. Setup
+2. Add SFDX Project to Source Control
 
 <br>
 
