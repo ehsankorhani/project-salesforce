@@ -10,6 +10,7 @@ LWC runs in browsers and consist mostly of standard JavaScript and HTML.
 
 1. Getting Started
 2. Hello World
+3. Create Components
 
 
 <br><br>
