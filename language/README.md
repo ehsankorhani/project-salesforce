@@ -1,6 +1,7 @@
 # Apex Programming Language
 
 ### Table of Contents
+
 0. Introduction
 1. Data types and variables
 2. Control Flow
@@ -11,7 +12,7 @@
 7. Casting classes
 8. System namespace
 9. Schema namespace
-10. Working sObjects
+10. Working with sObjects
 11. ...
 12. Triggers
 13. Asynchronous
