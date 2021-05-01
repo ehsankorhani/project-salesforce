@@ -9,8 +9,8 @@ export default class JsSubscriber extends LightningElement {
     }
 
     handleMessage = (e) => {
-        console.log('event', e.detail.value);
-        this.valueInp = e.detail.value;
+        //console.log('event', e.detail.value);
+        //this.valueInp = e.detail.value;
     }
 
     disconnectedCallback() {
