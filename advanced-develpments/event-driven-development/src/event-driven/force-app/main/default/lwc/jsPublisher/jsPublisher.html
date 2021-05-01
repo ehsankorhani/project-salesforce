@@ -1,0 +1,24 @@
+<template>
+  <div data-component-id="home_assistant" data-aura-rendered-by="728:0" class="flexipageComponent"
+    data-aura-class="flexipageComponent">
+    <div class="slds-card homeAssistant" data-aura-rendered-by="733:0" data-aura-class="homeAssistant">
+      <div class="slds-card__header slds-grid" data-aura-rendered-by="734:0">
+        <header class="header-title-container slds-has-flexi-truncate" data-aura-rendered-by="735:0">
+          <h2 data-aura-rendered-by="736:0"><span class="slds-text-heading_small"
+              data-aura-rendered-by="737:0">Publisher</span></h2>
+        </header>
+      </div>
+      <div class="slds-card__body slds-card__body_inner" data-aura-rendered-by="739:0">
+        <div class="slds-form">
+          <div class="slds-form-element slds-form-element_horizontal">
+            <label class="slds-form-element__label" for="stacked-input-id-01">Item</label>
+            <div class="slds-form-element__control">
+              <input type="text" id="stacked-input-id-01" placeholder="Add item…" class="slds-input" value={item} onchange={changeHandler} />
+            </div>
+          </div>
+          <button class="slds-button slds-button_brand" onclick={publishEvent}>Publish</button>
+        </div>        
+      </div>
+    </div>
+  </div>
+</template>
