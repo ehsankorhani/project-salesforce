@@ -260,6 +260,43 @@ if(CanTheUser.read(new account())){
 
 ## Record-level Security (Sharing)
 
+When `with sharing` keyword applied to an Apex class declaration, the runtime filters out records returned by SOQL queries that do not meet the sharing rules for the current user context.
+
+If it is not specified, then this is inherited from the outermost Apex class that controls the execution.
+The `without sharing` keyword can be used to explicitly enable the return of all records meeting the query.
+
+|                        | Sharing Enforced |
+| ---------------------- |:----------------:|
+| with sharing           | * |
+| without sharing        | - |
+| inherited sharing      | inherited from parent. `with sharing` if entry point |
+| no sharing clause      | inherited from parent. `without sharing` if entry point except for lightning |
+
+<br>
+
+```java
+public inherited sharing class AccountControllerInheritedSharing {
+    @AuraEnabled(cacheable=true)
+    public static List<Account> getAccounts() {
+        return [SELECT Name, AnnualRevenue, Industry FROM Account ORDER BY Name];
+    }
+}
+```
+
+### `System.runAs()`
+
+Enforces sharing (not CRUD or FLS) only for the Test mode.
+
+```java
+User u = new User(UserName='uniqueUser', Alias='standt', email='standarduser@testorg.com');
+
+
+System.runAs(u) {
+    // code will run as user u
+    // ...
+}
+```
+
 <br>
 <br>
 
@@ -269,3 +306,4 @@ if(CanTheUser.read(new account())){
 
 - [Alba Rivas - Salesforce Apex Hours - Security in Salesforce](https://youtu.be/RMTA06yWNms)
 - [Code Examples that show how to enforce security in Apex and LWC](https://github.com/albarivas/security)
+- Andrew Fawcett - Salesforce Lightning Platform Enterprise Architecture
