@@ -300,6 +300,88 @@ System.runAs(u) {
 <br>
 <br>
 
+## Data Security in LWC
+
+LWC Base Components enforce CRUD, FLS, and Sharing
+
+- `lightning-record-form`
+- `lightning-record-edit-form`
+- `lightning-record-view-form`
+
+LDS `Wire` adapters and functions enforce CRUD, FLS, and Sharing
+
+When calling Apex the Apex level security applies.
+
+<br>
+<br>
+
+## Application Security
+
+### SOQL Injection
+
+```java
+@AuraEnabled(cacheable=true)
+public static List<Account> getFilteredAccountsInjection(String searchValue) {
+    return (List<Account>) Database.query(
+        'SELECT Name, AnnualRevenue, Industry FROM Account WHERE Name LIKE \'%' +
+        searchValue +
+        '%\' ORDER BY Name'
+    );
+}
+```
+
+- Use static queries
+- If needed to use dynamic queries, always bind user input with ":"
+- If not possible, escape, typecast or whitelist inputs
+
+```java
+@AuraEnabled(cacheable=true)
+public static List<Account> getFilteredAccounts(String searchValue) {
+    return (List<Account>) Database.query(
+        'SELECT Name, AnnualRevenue, Industry FROM Account WHERE Name LIKE \'%' +
+        String.escapeSingleQuotes(searchValue) +
+        '%\' ORDER BY Name'
+    );
+}
+```
+
+<br>
+
+### Locker Service
+
+- JavaScript Strict mode enforcement
+- DOM Access containment
+  - Safe Harbour: mechanism to relax this restriction
+
+**Locker Console** can be used to try and evaluate an script - without needing to create the component.
+
+<br>
+
+### Preventing XSS
+
+Stay away from DOM manipulation `(lwc:dom="manual")` and use template directives => Sanitization of inputs! 
+
+Avoid:
+
+- Eval
+- DOMParser.parseFromString
+- Document.implementation.createHTMLDocument
+- setTimeout
+- setInterval
+
++ Apply input filtering (i.e. don't allow `>`)
++ Apply output encoding (i.e. `>` to `&ls;`)
+
+<br>
+
+### Preventing CSRF
+
+- Don't change state (execute DML) on component load - connectedCallback, renderedCallback, ...
+- Validate `origin` header on your exposed API endpoints or add custom token for CSRF protection.
+
+<br>
+<br>
+
 ---
 
 ### References
