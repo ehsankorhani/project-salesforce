@@ -4,6 +4,9 @@
 0. Introduction
 1. Setup
 2. Add SFDX Project to Source Control
+3. Create an Scratch Org from Source
+4. Useful commands
+5. Build and Deploy with Package.xml Metadata
 
 <br>
 
