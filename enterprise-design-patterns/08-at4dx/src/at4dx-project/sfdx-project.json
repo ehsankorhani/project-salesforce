@@ -1,0 +1,24 @@
+{
+  "packageDirectories": [
+    {
+      "path": "sfdx-source/libs"
+    },
+    {
+      "path": "sfdx-source/core"
+    },
+    {
+      "path": "sfdx-source/other",
+      "default": true
+    },
+    {
+      "path": "sfdx-source/common"
+    },
+    {
+      "path": "sfdx-source/my-app",
+      "default": false
+    }
+  ],
+  "namespace": "",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "51.0"
+}
