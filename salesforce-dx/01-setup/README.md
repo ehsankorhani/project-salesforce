@@ -66,6 +66,20 @@ $ sfdx force:org:list
 
 <br>
 
+**Note**: Developer Edition DevHub is only valid for 30 days and a new DevHub must be created afterwards.
+
+|     | ALIAS | USERNAME | ORG ID | CONNECTED STATUS |
+| --- | ----- | -------- | ------ | ---------------- |
+| (D) | DefaultHub | abc@xyz.com | 00D5g000004jAhWEAU | RefreshTokenAuthError |
+
+Logout in order to clean up the unwanted DevHub (non-Scratch) orgs:
+
+```bash
+$ sfdx force:auth:logout -u ***@***.com
+```
+
+<br>
+
 ## Salesforce DX project
 
 To begin we need to create a DX project:

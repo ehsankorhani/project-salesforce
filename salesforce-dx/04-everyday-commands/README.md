@@ -1,4 +1,4 @@
-# SFDX Useful Commands
+# SFDX Everyday work Commands
 
 ### Get Org details
 
