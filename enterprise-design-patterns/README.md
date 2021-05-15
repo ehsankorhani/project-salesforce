@@ -7,6 +7,9 @@
 3. Service Pattern
 4. Application Factory Pattern
 5. Unit Of Work Pattern
+6. Apex Mocks
+7. Force-DI
+8. Advanced Techniques To Adopt SalesforceDX
 
 <br>
 
