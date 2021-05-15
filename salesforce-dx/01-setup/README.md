@@ -29,6 +29,16 @@ $ sfdx plugins --core
 
 <br>
 
+### Update SFDX CLI
+
+Occasionally you need to update your CLI in order to work with the latest improvements.
+
+```bash
+$ sfdx update
+```
+
+<br>
+
 ## Sign up for Dev Hub account
 
 Navigate to https://developer.salesforce.com/promotions/orgs/dx-signup. Here you can sign-up for a 30 day trial Dev Hub.
@@ -77,6 +87,8 @@ Logout in order to clean up the unwanted DevHub (non-Scratch) orgs:
 ```bash
 $ sfdx force:auth:logout -u ***@***.com
 ```
+
+**Note**: remember to `Enable Dev Hub` on the newly created Org.
 
 <br>
 

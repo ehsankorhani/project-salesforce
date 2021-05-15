@@ -23,7 +23,7 @@ And then select the `config` file, enter a Name for the scratch org, and number 
 Alternatively, in you terminal type:
 
 ```bash
-sfdx force:org:create -f project-scratch-def.json -a MyScratchOrgAlias --durationdays 30
+sfdx force:org:create -f ./config/project-scratch-def.json -a MyScratchOrgAlias --durationdays 30
 ```
 
 Wait for the operation to finish. You should be able to get the `Org Id` and a `username` (i.e. test-b4agup43oxmu@example.com).

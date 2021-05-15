@@ -6,6 +6,7 @@
     <description>Add a classic greeting to any page.</description>
     <targets>
       <target>lightning__AppPage</target>
+      <target>lightning__HomePage</target>
     </targets>
     <targetConfigs>
       <targetConfig targets="lightning__AppPage">
