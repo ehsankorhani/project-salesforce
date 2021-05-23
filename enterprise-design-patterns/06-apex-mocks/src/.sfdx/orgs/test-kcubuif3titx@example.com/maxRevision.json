@@ -1,0 +1,257 @@
+{
+  "serverMaxRevisionCounter": 102,
+  "sourceMembers": {
+    "Profile__Admin": {
+      "serverRevisionCounter": 100,
+      "lastRetrievedFromServer": 100,
+      "memberType": "Profile",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_Answer": {
+      "serverRevisionCounter": 40,
+      "lastRetrievedFromServer": 40,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_AnswerTest": {
+      "serverRevisionCounter": 41,
+      "lastRetrievedFromServer": 41,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_AnyOrder": {
+      "serverRevisionCounter": 42,
+      "lastRetrievedFromServer": 42,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_AnyOrderTest": {
+      "serverRevisionCounter": 43,
+      "lastRetrievedFromServer": 43,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_ApexMocks": {
+      "serverRevisionCounter": 44,
+      "lastRetrievedFromServer": 44,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_ApexMocksConfig": {
+      "serverRevisionCounter": 45,
+      "lastRetrievedFromServer": 45,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_ApexMocksTest": {
+      "serverRevisionCounter": 46,
+      "lastRetrievedFromServer": 46,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_ApexMocksUtils": {
+      "serverRevisionCounter": 47,
+      "lastRetrievedFromServer": 47,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_ApexMocksUtilsTest": {
+      "serverRevisionCounter": 48,
+      "lastRetrievedFromServer": 48,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_ArgumentCaptor": {
+      "serverRevisionCounter": 49,
+      "lastRetrievedFromServer": 49,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_ArgumentCaptorTest": {
+      "serverRevisionCounter": 50,
+      "lastRetrievedFromServer": 50,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_IDGenerator": {
+      "serverRevisionCounter": 51,
+      "lastRetrievedFromServer": 51,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_IDGeneratorTest": {
+      "serverRevisionCounter": 52,
+      "lastRetrievedFromServer": 52,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_IMatcher": {
+      "serverRevisionCounter": 53,
+      "lastRetrievedFromServer": 53,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_InOrder": {
+      "serverRevisionCounter": 54,
+      "lastRetrievedFromServer": 54,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_InOrderTest": {
+      "serverRevisionCounter": 55,
+      "lastRetrievedFromServer": 55,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_Inheritor": {
+      "serverRevisionCounter": 56,
+      "lastRetrievedFromServer": 56,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_InheritorTest": {
+      "serverRevisionCounter": 57,
+      "lastRetrievedFromServer": 57,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_InvocationOnMock": {
+      "serverRevisionCounter": 58,
+      "lastRetrievedFromServer": 58,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_Match": {
+      "serverRevisionCounter": 59,
+      "lastRetrievedFromServer": 59,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_MatchTest": {
+      "serverRevisionCounter": 60,
+      "lastRetrievedFromServer": 60,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_MatcherDefinitions": {
+      "serverRevisionCounter": 61,
+      "lastRetrievedFromServer": 61,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_MatcherDefinitionsTest": {
+      "serverRevisionCounter": 62,
+      "lastRetrievedFromServer": 62,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_MatchersReturnValue": {
+      "serverRevisionCounter": 63,
+      "lastRetrievedFromServer": 63,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_MethodArgValues": {
+      "serverRevisionCounter": 64,
+      "lastRetrievedFromServer": 64,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_MethodArgValuesTest": {
+      "serverRevisionCounter": 65,
+      "lastRetrievedFromServer": 65,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_MethodCountRecorder": {
+      "serverRevisionCounter": 66,
+      "lastRetrievedFromServer": 66,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_MethodReturnValue": {
+      "serverRevisionCounter": 67,
+      "lastRetrievedFromServer": 67,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_MethodReturnValueRecorder": {
+      "serverRevisionCounter": 68,
+      "lastRetrievedFromServer": 68,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_MethodVerifier": {
+      "serverRevisionCounter": 69,
+      "lastRetrievedFromServer": 69,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_Mocks": {
+      "serverRevisionCounter": 70,
+      "lastRetrievedFromServer": 70,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_MyList": {
+      "serverRevisionCounter": 71,
+      "lastRetrievedFromServer": 71,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_QualifiedMethod": {
+      "serverRevisionCounter": 72,
+      "lastRetrievedFromServer": 72,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_QualifiedMethodAndArgValues": {
+      "serverRevisionCounter": 73,
+      "lastRetrievedFromServer": 73,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_QualifiedMethodAndArgValuesTest": {
+      "serverRevisionCounter": 74,
+      "lastRetrievedFromServer": 74,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_QualifiedMethodTest": {
+      "serverRevisionCounter": 75,
+      "lastRetrievedFromServer": 75,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_System": {
+      "serverRevisionCounter": 76,
+      "lastRetrievedFromServer": 76,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_SystemTest": {
+      "serverRevisionCounter": 77,
+      "lastRetrievedFromServer": 77,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__fflib_VerificationMode": {
+      "serverRevisionCounter": 78,
+      "lastRetrievedFromServer": 78,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__MyList": {
+      "serverRevisionCounter": 102,
+      "lastRetrievedFromServer": 102,
+      "memberType": "ApexClass",
+      "isNameObsolete": true
+    },
+    "ApexClass__MyListTest": {
+      "serverRevisionCounter": 101,
+      "lastRetrievedFromServer": 101,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    }
+  }
+}
