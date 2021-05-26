@@ -21,3 +21,4 @@ or by copying the files from the project source.
 ### References
 
 - [FFLib ApexMocks Framework](https://github.com/apex-enterprise-patterns/fflib-apex-mocks)
+- [Force.com Enterprise Architecture - Second Edition](https://github.com/afawcett/forcedotcom-enterprise-architecture-second-edition)
