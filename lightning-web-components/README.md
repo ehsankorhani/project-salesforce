@@ -11,6 +11,8 @@ LWC runs in browsers and consist mostly of standard JavaScript and HTML.
 1. Getting Started
 2. Hello World
 3. Create Components
+4. Communicate with Events
+5. Working with Salesforce Data
 
 
 <br><br>
