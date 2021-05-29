@@ -28,3 +28,4 @@ With SFDX comes:
 - [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
 - [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/)
 - [Getting Started with the Salesforce® DX CLI (SFDX) - Udemy](https://www.udemy.com/course/learn-sfdx/)
+- [Build a Package.xml Manifest](https://trailhead.salesforce.com/content/learn/modules/package-xml/package-xml-manifest)

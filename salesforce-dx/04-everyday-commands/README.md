@@ -2,8 +2,11 @@
 
 ### Get Org details
 
+OUtput includes access token, username, password, alias, etc.
+
 ```bash
 $ sfdx force:org:display -u yourOrgAlias
+$ sfdx force:org:display -u yourOrgAlias -- verbose
 ```
 
 <br>
