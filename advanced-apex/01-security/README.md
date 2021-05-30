@@ -298,6 +298,10 @@ System.runAs(u) {
 ```
 
 <br>
+
+---
+
+<br>
 <br>
 
 ## Data Security in LWC
@@ -380,12 +384,243 @@ Avoid:
 - Validate `origin` header on your exposed API endpoints or add custom token for CSRF protection.
 
 <br>
+
+---
+
+<br>
+<br>
+
+## Sensitive Data Exposure
+
+### What are Secrets?
+
+- Passwords
+- Encryption keys
+- OAuth tokens
+- Payment information
+- Social security numbers
+
+<br>
+
+### Storing Secrets
+
+- Named credentials
+- Protected custom settings
+- Protected custom metadata / custom metadata records
+- Encrypt secrets in code
+
+<br>
+
+#### 1. Named credentials
+
+Use `Named credential` along with `Auth. Provider` to make a secure callout code.
+
+It can use **Merge Fields** to send data specified in Auth. Provider.
+
+For example:
+
+```java
+req.setHeader('X-Username', '{!$Credential.UserName}');
+```
+
+For a complete documentation see: [Merge Fields for Apex Callouts That Use Named Credentials](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_callouts_named_credentials_merge_fields.htm).
+
+**Note:**
+
+By checking the `Generate Authorization Header` in Named Credential, Salesforce generates an authorization header and applies it to each callout that references the named credential.
+
+However, if you check the `Allow Merge Fields in HTTP` in `Header` or `Body`, the code specifies how the HTTP header and request body are constructed.
+
+<br>
+
+#### 2. Protected Custom Settings
+
+There are two types of Custom Settings in a Managed Package:
+
+1. **Public**
+2. **Protected**: good place to store sensitive information
+
+The `Protected` Custom Setting is only accessible by the Namespace or the Package that they are defined in. The Target/Subscriber org will not be able to see the settings.
+
+To be able to read data from protected custom settings the We can create a `global` service:
+
+```java
+global class AuthenticatedService {
+
+    global static String useProtectedCustomSettings() {
+        Protected_Setting__c setting = Protected_Setting__c.getInstance();
+        return setting.Sensitive_Field__c;
+    }
+
+    // ...
+}
+```
+
+Note that we can access `global` class and methods from the subscriber org.
+
+<br>
+
+#### 3. Protected Custom Metadata
+
+Similar to Custom Settings we can create `protected` Custom Metadata to store sensitive data and access it via a global service:
+
+```java
+global class AuthenticatedService {
+
+    global static String useProtectedCustomMetadata() {
+        Protected_Metadata__mdt[] mds = [SELECT Sensitive_Field__c FROM Protected_Metadata__mdt WHERE DeveloperName = 'Public_Record'];
+        return mds[0].Sensitive_Field__c;
+    }
+
+    // ...
+}
+```
+
+<br>
+
+#### 4. Protected Custom Metadata Record
+
+Public Custom Metadata can contain `protected` records. TO access them in a subscriber org we can write this service:
+
+```java
+global class AuthenticatedService {
+
+    global static String useProtectedCustomMetadataRecord() {
+        Protected_Metadata__mdt[] mds = [SELECT Sensitive_Field__c FROM Protected_Metadata__mdt WHERE DeveloperName = 'Protected_Record'];
+        return mds[0].Sensitive_Field__c;
+    }
+
+    // ...
+}
+```
+
+<br>
+
+#### Store sensitive information
+
+In case we needed to store data we can only use the *Protected Custom Settings*:
+
+```java
+global class AuthenticatedService {
+
+    global static void populateCustomSetting() {
+        insert new Protected_Setting__c(SetupOwnerId=UserInfo.getOrganizationId(), Sensitive_Field__c ='myPwd!');        
+    }
+
+    // ...
+}
+```
+
+<br>
+
+#### 5. Encrypt secrets in code
+
+In order to encrypt data we need to use the `crypto` class.
+
+To encrypt a string using the crypto class:
+
+```java
+public with sharing class Encryption {
+
+  @AuraEnabled
+  public static String encryptAES256() {
+    // Generate AES key (private key)
+    Blob cryptoKey = Crypto.generateAesKey(256);
+
+    Blob data = Blob.valueOf('Test data');
+
+    Blob encryptedData = Crypto.encryptWithManagedIV('AES256', cryptoKey, data);
+
+    // Encode Blob in Base64
+    return EncodingUtil.base64Encode(encryptedData);
+  }
+
+  // ...
+}
+```
+
+The external system can use the `key` and the specified algorithm to decrypt data.
+
+The `AES256` does not enforce data integrity, for that we can use other algorithms such as `Hash Digest`.
+
+To make sure that data was not corrupted, these algorithm generate a digest:
+
+```java
+public with sharing class Encryption {
+
+  @AuraEnabled
+  public static String hashSHA512() {
+    Blob data = Blob.valueOf('Test data');
+
+    Blob hash = Crypto.generateDigest('SHA512', data);
+
+    // Encode Blob in Base64
+    return EncodingUtil.base64Encode(hash);
+  }
+
+  // ...
+}
+```
+
+The destination can generate the digest again to ensure that the data is same as the one in source.
+
+To make this more secure we can use `mac` (Message Authentication Code) and use a private key as well:
+
+```java
+public with sharing class Encryption {
+
+  @AuraEnabled
+  public static String macHMAC512() {
+    // Use private key
+    Blob cryptoKey = Blob.valueOf('mysupersecretkey');
+
+    Blob data = Blob.valueOf('Test data');
+
+    Blob mac = Crypto.generateMac('hmacSHA512', data, cryptoKey);
+
+    // Encode Blob in Base64
+    return EncodingUtil.base64Encode(mac);
+  }
+
+  // ...
+}
+```
+
+The destination is going to need the private key to decrypt the code.
+
+Finally, we can use a `Digital Signature` so the target code would not need to know the private key, but only a **public key**.
+
+```java
+public with sharing class Encryption {
+
+  static final String PRIVATE_KEY = 'XXXX';
+
+  @AuraEnabled
+  public static String digitalSignature() {
+    // Use private key (must be in RSA's PKCS #8 (1.2) Private-Key Information Syntax Standard form)
+    Blob cryptoKey = EncodingUtil.base64Decode(PRIVATE_KEY);
+
+    Blob data = Blob.valueOf('Test data');
+
+    Blob digitalSignature = Crypto.sign('RSA', data, cryptoKey);
+
+    // Encode Blob in Base64
+    return EncodingUtil.base64Encode(digitalSignature);
+  }
+
+}
+```
+
+<br>
 <br>
 
 ---
+
+<br>
 
 ### References
 
 - [Alba Rivas - Salesforce Apex Hours - Security in Salesforce](https://youtu.be/RMTA06yWNms)
 - [Code Examples that show how to enforce security in Apex and LWC](https://github.com/albarivas/security)
 - Andrew Fawcett - Salesforce Lightning Platform Enterprise Architecture
+- [Alba Rivas - Security for Salesforce Developers: Storing Secrets (Episode III)](https://youtu.be/aqztf1nJv-k)
