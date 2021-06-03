@@ -6,7 +6,7 @@ OUtput includes access token, username, password, alias, etc.
 
 ```bash
 $ sfdx force:org:display -u yourOrgAlias
-$ sfdx force:org:display -u yourOrgAlias -- verbose
+$ sfdx force:org:display -u yourOrgAlias --verbose
 ```
 
 <br>
@@ -47,4 +47,14 @@ To set an Alias for an existing org we use this command:
 
 ```bash
 $ sfdx force:alias:set My_Alias_Name=user@namespace.com.sc
+```
+
+<br>
+
+### DevHub
+
+Change default DevHub:
+
+```bash
+$ sfdx force:config:set defaultdevhubusername=me@myhub.org
 ```
